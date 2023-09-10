@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -27,7 +28,7 @@ namespace TP1_SLAM5.Entities
 
         public static List<Commande> listeCommandes()
         {
-            return monModel.Commandes.ToList();
+            return monModel.Commandes.Include(a => a.NumcliNavigation).ToList();
         }
 
         public static List<Partition> listePartitions()

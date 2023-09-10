@@ -37,7 +37,15 @@ namespace TP1_SLAM5
 
         private void commandesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            bsData.DataSource = Modele.listeCommandes(); // appel de la méthode listeClients
+
+            bsData.DataSource = Modele.listeCommandes().Select(x => new
+            {
+                x.Numcde,
+                x.Montantcde,
+                x.Datecde,
+                x.NumcliNavigation.Nomcli,
+                x.NumcliNavigation.Prenomcli
+            });
             dgvData.DataSource = bsData;
             dgvData.Columns[0].Visible = false;
 
