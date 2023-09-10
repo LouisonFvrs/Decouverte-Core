@@ -36,5 +36,19 @@ namespace TP1_SLAM5.Entities
             return monModel.Partitions.ToList();
         }
 
+        // bien la comprendre pour savoir la réutiliser
+        public static List<Commande> listeCommandesParClient(int idClient)
+        {
+            List<Commande> lesCommandes = monModel.Commandes.Where(p => p.Numcli ==
+           idClient).Include(p => p.NumcliNavigation).ToList();
+            return lesCommandes;
+        }
+
+        public static List<Commande> listeCommandesSuperieurA(int value)
+        {
+            List<Commande> lesCommandes = monModel.Commandes.Where(p => p.Montantcde >= value).ToList();
+            return lesCommandes;
+        }
+
     }
 }

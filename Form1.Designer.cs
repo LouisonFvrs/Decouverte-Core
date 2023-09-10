@@ -37,9 +37,14 @@
             partitionsToolStripMenuItem = new ToolStripMenuItem();
             quitterToolStripMenuItem = new ToolStripMenuItem();
             bsData = new BindingSource(components);
+            cbxClient = new ComboBox();
+            bsCli = new BindingSource(components);
+            num = new NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)dgvData).BeginInit();
             menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)bsData).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)bsCli).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)num).BeginInit();
             SuspendLayout();
             // 
             // dgvData
@@ -55,7 +60,7 @@
             dgvData.Location = new Point(45, 44);
             dgvData.Name = "dgvData";
             dgvData.RowTemplate.Height = 25;
-            dgvData.Size = new Size(711, 363);
+            dgvData.Size = new Size(711, 310);
             dgvData.TabIndex = 0;
             // 
             // menuStrip1
@@ -64,7 +69,7 @@
             menuStrip1.Items.AddRange(new ToolStripItem[] { clientsToolStripMenuItem, auteursToolStripMenuItem, commandesToolStripMenuItem, partitionsToolStripMenuItem, quitterToolStripMenuItem });
             menuStrip1.Location = new Point(3, 3);
             menuStrip1.Name = "menuStrip1";
-            menuStrip1.Size = new Size(455, 24);
+            menuStrip1.Size = new Size(335, 24);
             menuStrip1.TabIndex = 1;
             menuStrip1.Text = "menuStrip1";
             // 
@@ -103,11 +108,35 @@
             quitterToolStripMenuItem.Text = "Quitter";
             quitterToolStripMenuItem.Click += quitterToolStripMenuItem_Click;
             // 
+            // cbxClient
+            // 
+            cbxClient.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbxClient.FormattingEnabled = true;
+            cbxClient.Location = new Point(45, 376);
+            cbxClient.Name = "cbxClient";
+            cbxClient.Size = new Size(121, 23);
+            cbxClient.TabIndex = 2;
+            // 
+            // bsCli
+            // 
+            bsCli.CurrentChanged += bsCli_CurrentChanged;
+            // 
+            // num
+            // 
+            num.Location = new Point(636, 377);
+            num.Name = "num";
+            num.Size = new Size(120, 23);
+            num.TabIndex = 3;
+            num.Visible = false;
+            num.ValueChanged += num_ValueChanged;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(num);
+            Controls.Add(cbxClient);
             Controls.Add(dgvData);
             Controls.Add(menuStrip1);
             MainMenuStrip = menuStrip1;
@@ -118,6 +147,8 @@
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)bsData).EndInit();
+            ((System.ComponentModel.ISupportInitialize)bsCli).EndInit();
+            ((System.ComponentModel.ISupportInitialize)num).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -132,5 +163,8 @@
         private ToolStripMenuItem partitionsToolStripMenuItem;
         private ToolStripMenuItem quitterToolStripMenuItem;
         private BindingSource bsData;
+        private ComboBox cbxClient;
+        private BindingSource bsCli;
+        private NumericUpDown num;
     }
 }
