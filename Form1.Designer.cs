@@ -40,11 +40,14 @@
             cbxClient = new ComboBox();
             bsCli = new BindingSource(components);
             num = new NumericUpDown();
+            cbxComande = new ComboBox();
+            bsCmd = new BindingSource(components);
             ((System.ComponentModel.ISupportInitialize)dgvData).BeginInit();
             menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)bsData).BeginInit();
             ((System.ComponentModel.ISupportInitialize)bsCli).BeginInit();
             ((System.ComponentModel.ISupportInitialize)num).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)bsCmd).BeginInit();
             SuspendLayout();
             // 
             // dgvData
@@ -112,7 +115,7 @@
             // 
             cbxClient.DropDownStyle = ComboBoxStyle.DropDownList;
             cbxClient.FormattingEnabled = true;
-            cbxClient.Location = new Point(45, 376);
+            cbxClient.Location = new Point(45, 377);
             cbxClient.Name = "cbxClient";
             cbxClient.Size = new Size(121, 23);
             cbxClient.TabIndex = 2;
@@ -130,11 +133,26 @@
             num.Visible = false;
             num.ValueChanged += num_ValueChanged;
             // 
+            // cbxComande
+            // 
+            cbxComande.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbxComande.FormattingEnabled = true;
+            cbxComande.Location = new Point(45, 377);
+            cbxComande.Name = "cbxComande";
+            cbxComande.Size = new Size(121, 23);
+            cbxComande.TabIndex = 4;
+            cbxComande.Visible = false;
+            // 
+            // bsCmd
+            // 
+            bsCmd.CurrentChanged += bsCmd_CurrentChanged;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(cbxComande);
             Controls.Add(num);
             Controls.Add(cbxClient);
             Controls.Add(dgvData);
@@ -149,6 +167,7 @@
             ((System.ComponentModel.ISupportInitialize)bsData).EndInit();
             ((System.ComponentModel.ISupportInitialize)bsCli).EndInit();
             ((System.ComponentModel.ISupportInitialize)num).EndInit();
+            ((System.ComponentModel.ISupportInitialize)bsCmd).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -166,5 +185,7 @@
         private ComboBox cbxClient;
         private BindingSource bsCli;
         private NumericUpDown num;
+        private ComboBox cbxComande;
+        private BindingSource bsCmd;
     }
 }

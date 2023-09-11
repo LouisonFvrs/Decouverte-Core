@@ -20,6 +20,27 @@ namespace TP1_SLAM5
                 x.Adrcli
             });
             cbxClient.DataSource = bsCli;
+
+
+            cbxComande.ValueMember = "NUMCDE";
+            cbxComande.DisplayMember = "DATECDE";
+            bsCmd.DataSource = (Modele.listeCommandes()).Select(x => new
+            {
+                x.Numcde,
+                DATECDE = x.Datecde
+            });
+            cbxComande.DataSource = bsCmd;
+
+            num.Visible = false;
+            cbxClient.Visible = true;
+            cbxComande.Visible = false;
+            bsData.DataSource = Modele.listeClients().Select(x => new
+            {
+                x.Nomcli,
+                x.Prenomcli,
+                x.Adrcli,
+            });
+            dgvData.DataSource = bsData;
         }
 
         private void quitterToolStripMenuItem_Click(object sender, EventArgs e)
@@ -30,6 +51,8 @@ namespace TP1_SLAM5
         private void clientsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             num.Visible = false;
+            cbxClient.Visible = true;
+            cbxComande.Visible = false;
             bsData.DataSource = Modele.listeClients().Select(x => new
             {
                 x.Nomcli,
@@ -42,6 +65,8 @@ namespace TP1_SLAM5
         private void auteursToolStripMenuItem_Click(object sender, EventArgs e)
         {
             num.Visible = false;
+            cbxClient.Visible = false;
+            cbxComande.Visible = false;
             bsData.DataSource = Modele.listeAuteurs().Select(x => new
             {
                 x.Nomaut,
@@ -54,6 +79,8 @@ namespace TP1_SLAM5
         private void commandesToolStripMenuItem_Click(object sender, EventArgs e)
         {
             num.Visible = true;
+            cbxClient.Visible = false;
+            cbxComande.Visible = false;
             bsData.DataSource = Modele.listeCommandes().Select(x => new
             {
                 x.Numcde,
@@ -69,7 +96,14 @@ namespace TP1_SLAM5
         private void partitionsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             num.Visible = false;
-            bsData.DataSource = Modele.listePartitions(); // appel de la méthode listeClients
+            cbxClient.Visible = false;
+            cbxComande.Visible = true;
+            bsData.DataSource = Modele.listePartitions().Select(x => new
+            {
+                x.Numpart,
+                x.Prixpart,
+                x.Libpart
+            }); // appel de la méthode listeClients
             dgvData.DataSource = bsData;
 
         }
@@ -100,6 +134,18 @@ namespace TP1_SLAM5
                 x.Datecde,
                 x.NumcliNavigation.Nomcli,
                 x.NumcliNavigation.Prenomcli
+            });
+            dgvData.DataSource = bsData;
+        }
+
+        private void bsCmd_CurrentChanged(object sender, EventArgs e)
+        {
+            int IdCmd = Convert.ToInt32(cbxComande.SelectedValue);
+            bsData.DataSource = Modele.listePartitionParCommande(IdCmd).Select(x => new
+            {
+                x.Numpart,
+                x.Prixpart,
+                x.Libpart
             });
             dgvData.DataSource = bsData;
         }

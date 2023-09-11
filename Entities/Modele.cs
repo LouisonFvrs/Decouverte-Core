@@ -33,6 +33,7 @@ namespace TP1_SLAM5.Entities
 
         public static List<Partition> listePartitions()
         {
+            List<Partition> list = new List<Partition>();
             return monModel.Partitions.ToList();
         }
 
@@ -48,6 +49,12 @@ namespace TP1_SLAM5.Entities
         {
             List<Commande> lesCommandes = monModel.Commandes.Where(p => p.Montantcde >= value).ToList();
             return lesCommandes;
+        }
+
+        public static List<Partition> listePartitionParCommande(int idCde)
+        {
+            List<Partition> lesPartitions = monModel.Partitions.Where(p => p.Numpart == idCde).Include(p => p.Numcdes).ToList();
+            return lesPartitions;
         }
 
     }
