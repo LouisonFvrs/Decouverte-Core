@@ -11,6 +11,8 @@ public partial class Client
 
     public string? Prenomcli { get; set; }
 
+    public string? Tel { get; set; }
+
     public string? Adrcli { get; set; }
 
     public virtual ICollection<Commande> Commandes { get; set; } = new List<Commande>();

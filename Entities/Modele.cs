@@ -57,5 +57,19 @@ namespace TP1_SLAM5.Entities
             return lesPartitions;
         }
 
+        public static List<Style> listeStyle()
+        {
+            return monModel.Styles.ToList();
+        }
+
+        public static List<Partition> listePartitionStyle(int idStyle)
+        {
+            List<Partition> partitionSortByStyle = monModel.Partitions.Where(p => p.NumStyle == idStyle).Include(p => p.Numcdes).ToList();
+         //   List<Partition> partitionSortByStyle = monModel.Partitions.Where(s => s.NumStyle == 1).ToList();
+          
+            return partitionSortByStyle;
+          
+        }
+
     }
 }

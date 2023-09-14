@@ -31,14 +31,25 @@ namespace TP1_SLAM5
             });
             cbxComande.DataSource = bsCmd;
 
+            cbx_style.ValueMember = "numStyle";
+            cbx_style.DisplayMember = "libStyle";
+            bsStyle.DataSource = (Modele.listeStyle()).Select(x => new
+            {
+                x.NumStyle,
+                libStyle = x.LibStyle
+            });
+            cbx_style.DataSource = bsStyle;
+
             num.Visible = false;
             cbxClient.Visible = true;
             cbxComande.Visible = false;
+            cbx_style.Visible = false;
             bsData.DataSource = Modele.listeClients().Select(x => new
             {
                 x.Nomcli,
                 x.Prenomcli,
                 x.Adrcli,
+                x.Tel
             });
             dgvData.DataSource = bsData;
         }
@@ -53,11 +64,14 @@ namespace TP1_SLAM5
             num.Visible = false;
             cbxClient.Visible = true;
             cbxComande.Visible = false;
+            cbx_style.Visible = false;
             bsData.DataSource = Modele.listeClients().Select(x => new
             {
                 x.Nomcli,
                 x.Prenomcli,
                 x.Adrcli,
+                x.Tel
+
             });
             dgvData.DataSource = bsData;
         }
@@ -67,6 +81,7 @@ namespace TP1_SLAM5
             num.Visible = false;
             cbxClient.Visible = false;
             cbxComande.Visible = false;
+            cbx_style.Visible = false;
             bsData.DataSource = Modele.listeAuteurs().Select(x => new
             {
                 x.Nomaut,
@@ -81,6 +96,7 @@ namespace TP1_SLAM5
             num.Visible = true;
             cbxClient.Visible = false;
             cbxComande.Visible = false;
+            cbx_style.Visible = false;
             bsData.DataSource = Modele.listeCommandes().Select(x => new
             {
                 x.Numcde,
@@ -97,7 +113,8 @@ namespace TP1_SLAM5
         {
             num.Visible = false;
             cbxClient.Visible = false;
-            cbxComande.Visible = true;
+            //cbxComande.Visible = true;
+            cbx_style.Visible = true;
             bsData.DataSource = Modele.listePartitions().Select(x => new
             {
                 x.Numpart,
@@ -142,6 +159,18 @@ namespace TP1_SLAM5
         {
             int IdCmd = Convert.ToInt32(cbxComande.SelectedValue);
             bsData.DataSource = Modele.listePartitionParCommande(IdCmd).Select(x => new
+            {
+                x.Numpart,
+                x.Prixpart,
+                x.Libpart
+            });
+            dgvData.DataSource = bsData;
+        }
+
+        private void bsStyle_CurrentChanged(object sender, EventArgs e)
+        {
+            int numStyle = Convert.ToInt32(cbx_style.SelectedValue);
+            bsData.DataSource = Modele.listePartitionStyle(numStyle).Select(x => new
             {
                 x.Numpart,
                 x.Prixpart,

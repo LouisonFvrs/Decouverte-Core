@@ -42,12 +42,15 @@
             num = new NumericUpDown();
             cbxComande = new ComboBox();
             bsCmd = new BindingSource(components);
+            cbx_style = new ComboBox();
+            bsStyle = new BindingSource(components);
             ((System.ComponentModel.ISupportInitialize)dgvData).BeginInit();
             menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)bsData).BeginInit();
             ((System.ComponentModel.ISupportInitialize)bsCli).BeginInit();
             ((System.ComponentModel.ISupportInitialize)num).BeginInit();
             ((System.ComponentModel.ISupportInitialize)bsCmd).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)bsStyle).BeginInit();
             SuspendLayout();
             // 
             // dgvData
@@ -147,11 +150,26 @@
             // 
             bsCmd.CurrentChanged += bsCmd_CurrentChanged;
             // 
+            // cbx_style
+            // 
+            cbx_style.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbx_style.FormattingEnabled = true;
+            cbx_style.Location = new Point(45, 377);
+            cbx_style.Name = "cbx_style";
+            cbx_style.Size = new Size(121, 23);
+            cbx_style.TabIndex = 5;
+            cbx_style.Visible = false;
+            // 
+            // bsStyle
+            // 
+            bsStyle.CurrentChanged += bsStyle_CurrentChanged;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(cbx_style);
             Controls.Add(cbxComande);
             Controls.Add(num);
             Controls.Add(cbxClient);
@@ -168,6 +186,7 @@
             ((System.ComponentModel.ISupportInitialize)bsCli).EndInit();
             ((System.ComponentModel.ISupportInitialize)num).EndInit();
             ((System.ComponentModel.ISupportInitialize)bsCmd).EndInit();
+            ((System.ComponentModel.ISupportInitialize)bsStyle).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -187,5 +206,7 @@
         private NumericUpDown num;
         private ComboBox cbxComande;
         private BindingSource bsCmd;
+        private ComboBox cbx_style;
+        private BindingSource bsStyle;
     }
 }
