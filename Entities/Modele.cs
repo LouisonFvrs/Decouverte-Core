@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using TP1_SLAM5.Entities;
@@ -69,6 +70,27 @@ namespace TP1_SLAM5.Entities
           
             return partitionSortByStyle;
           
+        }
+
+        public static bool AjoutCommande(int montant, DateOnly dateC, int idClient)
+        {
+            Commande maCommande;
+            bool vretour = true;
+            try
+            {
+                maCommande = new Commande();
+                maCommande.Montantcde = montant; // mise à jour des propriétés
+                maCommande.Datecde = dateC;
+                maCommande.Numcli = idClient;
+                // ajout de l’objet : correspond à un insert
+                monModel.Commandes.Add(maCommande);
+                monModel.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                vretour = false;
+            }
+            return vretour;
         }
 
     }

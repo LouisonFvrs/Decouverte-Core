@@ -1,3 +1,4 @@
+using System.Windows.Forms;
 using TP1_SLAM5.Entities;
 
 namespace TP1_SLAM5
@@ -44,6 +45,7 @@ namespace TP1_SLAM5
             cbxClient.Visible = true;
             cbxComande.Visible = false;
             cbx_style.Visible = false;
+            addButton.Visible = false;
             bsData.DataSource = Modele.listeClients().Select(x => new
             {
                 x.Nomcli,
@@ -65,6 +67,7 @@ namespace TP1_SLAM5
             cbxClient.Visible = true;
             cbxComande.Visible = false;
             cbx_style.Visible = false;
+            addButton.Visible = false;
             bsData.DataSource = Modele.listeClients().Select(x => new
             {
                 x.Nomcli,
@@ -82,6 +85,7 @@ namespace TP1_SLAM5
             cbxClient.Visible = false;
             cbxComande.Visible = false;
             cbx_style.Visible = false;
+            addButton.Visible = false;
             bsData.DataSource = Modele.listeAuteurs().Select(x => new
             {
                 x.Nomaut,
@@ -97,6 +101,8 @@ namespace TP1_SLAM5
             cbxClient.Visible = false;
             cbxComande.Visible = false;
             cbx_style.Visible = false;
+            addButton.Visible = true;
+            
             bsData.DataSource = Modele.listeCommandes().Select(x => new
             {
                 x.Numcde,
@@ -113,6 +119,7 @@ namespace TP1_SLAM5
         {
             num.Visible = false;
             cbxClient.Visible = false;
+            addButton.Visible = false;
             //cbxComande.Visible = true;
             cbx_style.Visible = true;
             bsData.DataSource = Modele.listePartitions().Select(x => new
@@ -177,6 +184,13 @@ namespace TP1_SLAM5
                 x.Libpart
             });
             dgvData.DataSource = bsData;
+        }
+
+        // Ajouter une commande
+        private void addButton_Click(object sender, EventArgs e)
+        {
+            FormGestionCommandes form = new FormGestionCommandes();
+            form.Show();
         }
     }
 }

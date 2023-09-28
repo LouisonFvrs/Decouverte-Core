@@ -44,6 +44,7 @@
             bsCmd = new BindingSource(components);
             cbx_style = new ComboBox();
             bsStyle = new BindingSource(components);
+            addButton = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvData).BeginInit();
             menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)bsData).BeginInit();
@@ -164,11 +165,23 @@
             // 
             bsStyle.CurrentChanged += bsStyle_CurrentChanged;
             // 
+            // addButton
+            // 
+            addButton.Location = new Point(535, 415);
+            addButton.Name = "addButton";
+            addButton.Size = new Size(75, 23);
+            addButton.TabIndex = 6;
+            addButton.Text = "Ajouter";
+            addButton.UseVisualStyleBackColor = true;
+            addButton.Visible = false;
+            addButton.Click += addButton_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(addButton);
             Controls.Add(cbx_style);
             Controls.Add(cbxComande);
             Controls.Add(num);
@@ -208,5 +221,6 @@
         private BindingSource bsCmd;
         private ComboBox cbx_style;
         private BindingSource bsStyle;
+        private Button addButton;
     }
 }
