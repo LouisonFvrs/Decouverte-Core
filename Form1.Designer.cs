@@ -45,6 +45,8 @@
             cbx_style = new ComboBox();
             bsStyle = new BindingSource(components);
             addButton = new Button();
+            btnEdit = new Button();
+            btnDelCmd = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvData).BeginInit();
             menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)bsData).BeginInit();
@@ -176,11 +178,35 @@
             addButton.Visible = false;
             addButton.Click += addButton_Click;
             // 
+            // btnEdit
+            // 
+            btnEdit.Location = new Point(454, 415);
+            btnEdit.Name = "btnEdit";
+            btnEdit.Size = new Size(75, 23);
+            btnEdit.TabIndex = 7;
+            btnEdit.Text = "Modifier";
+            btnEdit.UseVisualStyleBackColor = true;
+            btnEdit.Visible = false;
+            btnEdit.Click += btnEdit_Click;
+            // 
+            // btnDelCmd
+            // 
+            btnDelCmd.Location = new Point(373, 415);
+            btnDelCmd.Name = "btnDelCmd";
+            btnDelCmd.Size = new Size(75, 23);
+            btnDelCmd.TabIndex = 8;
+            btnDelCmd.Text = "Supprimer";
+            btnDelCmd.UseVisualStyleBackColor = true;
+            btnDelCmd.Visible = false;
+            btnDelCmd.Click += btnDelCmd_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(btnDelCmd);
+            Controls.Add(btnEdit);
             Controls.Add(addButton);
             Controls.Add(cbx_style);
             Controls.Add(cbxComande);
@@ -222,5 +248,7 @@
         private ComboBox cbx_style;
         private BindingSource bsStyle;
         private Button addButton;
+        private Button btnEdit;
+        private Button btnDelCmd;
     }
 }

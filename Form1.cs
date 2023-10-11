@@ -44,6 +44,8 @@ namespace TP1_SLAM5
             num.Visible = false;
             cbxClient.Visible = true;
             cbxComande.Visible = false;
+            btnDelCmd.Visible = false;
+            btnEdit.Visible = false;
             cbx_style.Visible = false;
             addButton.Visible = false;
             bsData.DataSource = Modele.listeClients().Select(x => new
@@ -65,7 +67,9 @@ namespace TP1_SLAM5
         {
             num.Visible = false;
             cbxClient.Visible = true;
+            btnDelCmd.Visible = false;
             cbxComande.Visible = false;
+            btnEdit.Visible = false;
             cbx_style.Visible = false;
             addButton.Visible = false;
             bsData.DataSource = Modele.listeClients().Select(x => new
@@ -82,6 +86,8 @@ namespace TP1_SLAM5
         private void auteursToolStripMenuItem_Click(object sender, EventArgs e)
         {
             num.Visible = false;
+            btnEdit.Visible = false;
+            btnDelCmd.Visible = false;
             cbxClient.Visible = false;
             cbxComande.Visible = false;
             cbx_style.Visible = false;
@@ -98,11 +104,13 @@ namespace TP1_SLAM5
         private void commandesToolStripMenuItem_Click(object sender, EventArgs e)
         {
             num.Visible = true;
+            btnEdit.Visible = true;
+            btnDelCmd.Visible = true;
             cbxClient.Visible = false;
             cbxComande.Visible = false;
             cbx_style.Visible = false;
             addButton.Visible = true;
-            
+
             bsData.DataSource = Modele.listeCommandes().Select(x => new
             {
                 x.Numcde,
@@ -119,6 +127,8 @@ namespace TP1_SLAM5
         {
             num.Visible = false;
             cbxClient.Visible = false;
+            btnEdit.Visible = false;
+            btnDelCmd.Visible = false;
             addButton.Visible = false;
             //cbxComande.Visible = true;
             cbx_style.Visible = true;
@@ -192,5 +202,42 @@ namespace TP1_SLAM5
             FormGestionCommandes form = new FormGestionCommandes();
             form.Show();
         }
+
+        // Modifier une commande
+        private void btnEdit_Click(object sender, EventArgs e)
+        {
+            if (dgvData.Rows.Count > 0)
+            {
+                DataGridViewRow selectedRow = dgvData.SelectedRows[0];
+                if (selectedRow != null)
+                {
+                    object cellValue = selectedRow.Cells["Numcde"].Value;
+                    int idCom = Convert.ToInt32(cellValue);
+
+                    FormGestionCommandes form = new FormGestionCommandes(idCom);
+                    form.Show();
+                }
+
+            }
+        }
+
+        // Supprimer une commande
+        private void btnDelCmd_Click(object sender, EventArgs e)
+        {
+            if (dgvData.Rows.Count > 0)
+            {
+                DataGridViewRow selectedRow = dgvData.SelectedRows[0];
+                if (selectedRow != null)
+                {
+                    object cellValue = selectedRow.Cells["Numcde"].Value;
+                    int idCom = Convert.ToInt32(cellValue);
+                    if (Modele.SuppCommande(idCom)) MessageBox.Show("commande supprimer");
+                    else MessageBox.Show("Erreur");
+                }
+
+            }
+        }
+
+
     }
 }

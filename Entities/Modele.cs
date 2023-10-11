@@ -3,9 +3,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
+using System.Reflection.Metadata;
 using System.Text;
 using System.Threading.Tasks;
 using TP1_SLAM5.Entities;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace TP1_SLAM5.Entities
 {
@@ -90,6 +92,60 @@ namespace TP1_SLAM5.Entities
             {
                 vretour = false;
             }
+            return vretour;
+        }
+
+        // Récupérer une commande
+        public static Commande recupererCommande(int idCommande)
+        {
+            Commande commande = new Commande();
+            try
+            {
+                commande = monModel.Commandes.First(x => x.Numcde == idCommande);
+            } catch (Exception ex) {
+                MessageBox.Show(ex.Message.ToString());
+             }
+
+            return commande;
+        }
+
+        // Modifier une commande
+        public static bool ModifierCommande(int idCde, int montant, DateOnly dateC, int idClient)
+        {
+            bool vretour = true;
+            try
+            {
+                Commande maCommande = recupererCommande(idCde);
+                maCommande.Montantcde = montant;
+                maCommande.Datecde = dateC;
+                maCommande.Numcli = idClient;
+                monModel.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show(ex.Message);
+                vretour=false;
+            }
+
+            return vretour;
+        }
+
+        // Supprimer une commande
+        public static bool SuppCommande(int idCommande)
+        {
+            bool vretour = true;
+            try
+            {
+                Commande maCommande = recupererCommande(idCommande);
+                monModel.Commandes.Remove(maCommande);
+                monModel.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show(ex.Message);
+                vretour = false;
+            }
+
             return vretour;
         }
 

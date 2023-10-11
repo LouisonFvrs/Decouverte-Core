@@ -37,6 +37,7 @@
             cbxAddCommande = new ComboBox();
             btnAddCommande = new Button();
             bsCli = new BindingSource(components);
+            btnEditCmd = new Button();
             ((System.ComponentModel.ISupportInitialize)numMontant).BeginInit();
             ((System.ComponentModel.ISupportInitialize)bsCli).BeginInit();
             SuspendLayout();
@@ -99,13 +100,26 @@
             btnAddCommande.TabIndex = 6;
             btnAddCommande.Text = "Ajouter";
             btnAddCommande.UseVisualStyleBackColor = true;
+            btnAddCommande.Visible = false;
             btnAddCommande.Click += btnAddCommande_Click;
+            // 
+            // btnEditCmd
+            // 
+            btnEditCmd.Location = new Point(97, 190);
+            btnEditCmd.Name = "btnEditCmd";
+            btnEditCmd.Size = new Size(75, 23);
+            btnEditCmd.TabIndex = 7;
+            btnEditCmd.Text = "Editer";
+            btnEditCmd.UseVisualStyleBackColor = true;
+            btnEditCmd.Visible = false;
+            btnEditCmd.Click += btnEditCmd_Click;
             // 
             // FormGestionCommandes
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(268, 236);
+            Controls.Add(btnEditCmd);
             Controls.Add(btnAddCommande);
             Controls.Add(cbxAddCommande);
             Controls.Add(dateAddCommande);
@@ -131,5 +145,6 @@
         private ComboBox cbxAddCommande;
         private Button btnAddCommande;
         private BindingSource bsCli;
+        private Button btnEditCmd;
     }
 }
